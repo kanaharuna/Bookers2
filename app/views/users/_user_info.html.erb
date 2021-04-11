@@ -1,2 +1,10 @@
 <h1>User info</h1>
-<%=%>
+　<p><%= attachment_image_tag user,:profile_image,:fill,100,100,format:'jpeg',fallback:"no_image.jpg" %></p>
+  <p>name:<%= user.name %></p>
+  <p>introduction:<%= user.introduction %></p>
+
+<% if user.id == current_user.id%>
+  <p><%= link_to 'edit',edit_user_path(user) %></p>
+<% else %>
+<%= link_to 'edit',user_path(current_user.id) %>
+<% end %>
